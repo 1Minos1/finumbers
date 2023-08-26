@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Число от 0 до 1000</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+   body {
+     font-family: Arial, sans-serif;
+     background-color: #f0f0f0;
+     margin: 0;
+     padding: 0;
+     text-align: center;
+   }
+
+   .container {
+     background-color: #fff;
+     border-radius: 10px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     padding: 20px;
+     margin: 20px auto;
+     max-width: 400px;
+   }
+
+   h1 {
+     font-size: 24px;
+     margin-bottom: 20px;
+   }
+
+   button {
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     border-radius: 5px;
+     padding: 10px 20px;
+     margin-bottom: 10px;
+     cursor: pointer;
+   }
+
+   #a {
+     font-size: 24px;
+     margin-bottom: 10px;
+   }
+
+   #g {
+     font-size: 18px;
+     margin-bottom: 10px;
+   }
+
+   #b, #c, #d {
+     font-size: 18px;
+     display: inline-flex;
+   }
+ </style>
+ <script>
+   let sombodyEnabled = true;
+
+   function toggleSombodyOutput() {
+     sombodyEnabled = !sombodyEnabled;
+     let finnishTitle = document.getElementById("finnish-title");
+     if (!sombodyEnabled) {
+       document.getElementById("g").textContent = ""; // Очистить вывод функции
+       document.getElementById("b").textContent = "";
+       document.getElementById("c").textContent = "";
+       document.getElementById("d").textContent = "";
+       finnishTitle.style.display = "none"; // Скрыть "Финское название"
+     } else {
+       // Если включено, выполнить функцию sombody()
+       sombody();
+       finnishTitle.style.display = "block"; // Показать "Финское название"
+     }
+   }
+
+   function randomize() {
+     let a = Math.floor(Math.random() * 1001);
+     document.getElementById("a").textContent = a;
+     if (sombodyEnabled) {
+       sombody();
+     }
+   }
+
+   function sombody() {
+     if (!sombodyEnabled) return;
+     let a = parseInt(document.getElementById("a").textContent);
+     if (a < 19) {
+       let numbers = ["nolla","Yksi","Kaksi","Kolme","Neljä","Viisi","Kuusi","Seitsemän","Kahdeksan","Yhdeksän","Kymmenen","Yksitoista","Kaksitoista","Kolmetoista","Neljätoista","Viisitoista","Kuusitoista","Seitsemäntoista","Kahdeksantoista","yhdeksäntoista"];
+       document.getElementById("g").textContent = numbers[a];
+     } else {
+       let b = Math.floor(a / 100);
+       let c = Math.floor((a / 10) % 10);
+       let d = a % 10;
+       let hundreds = ["","Sata","Kaksisataa","Kolmesataa","Neljäsataa","Viisisataa","Kuusisataa","Seitsemänsataa","Kahdeksansataa","Yhdeksänsataa"];
+       document.getElementById("b").textContent = hundreds[b];
+       let list = ["","Kymmenen", "Kaksikymmentä", "Kolmekymmentä", "Neljäkymmentä", "Viisikymmentä", "Kuusikymmentä", "Seitsemänkymmentä", "Kahdeksankymmentä", "Yhdeksänkymmentä"];
+       document.getElementById("c").textContent = list[c];
+       let numbers = ["","Yksi","Kaksi","Kolme","Neljä","Viisi","Kuusi","Seitsemän","Kahdeksan","Yhdeksän"];
+       document.getElementById("d").textContent = numbers[d];
+     }
+   }
+ </script>
+</head>
+<body>
+ <div class="container">
+  <h1>Число от 0 до 1000</h1>
+  <button onclick="randomize(); sombody()">Обновить</button>
+  <button onclick="toggleSombodyOutput()">Скрыть/Показать Название</button>
+  <p>Число</p> 
+  <div id="a"></div>
+  <p id="finnish-title">Финское название</p>
+  <div id="g"></div>
+  <div id="b"></div>
+  <div id="c"></div>
+  <div id="d"></div>
+ </div>
+</body>
+</html>
+
+
