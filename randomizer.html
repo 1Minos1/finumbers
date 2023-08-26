@@ -65,8 +65,6 @@
        document.getElementById("d").textContent = "";
        finnishTitle.style.display = "none"; // Скрыть "Финское название"
      } else {
-       // Если включено, выполнить функцию sombody()
-       sombody();
        finnishTitle.style.display = "block"; // Показать "Финское название"
      }
    }
@@ -75,17 +73,23 @@
      let a = Math.floor(Math.random() * 1001);
      document.getElementById("a").textContent = a;
      if (sombodyEnabled) {
-       sombody();
+       sombody(); // Вызываем sombody() после обновления числа
      }
    }
 
-   function sombody() {
+  function sombody() {
      if (!sombodyEnabled) return;
      let a = parseInt(document.getElementById("a").textContent);
      if (a < 19) {
        let numbers = ["nolla","Yksi","Kaksi","Kolme","Neljä","Viisi","Kuusi","Seitsemän","Kahdeksan","Yhdeksän","Kymmenen","Yksitoista","Kaksitoista","Kolmetoista","Neljätoista","Viisitoista","Kuusitoista","Seitsemäntoista","Kahdeksantoista","yhdeksäntoista"];
        document.getElementById("g").textContent = numbers[a];
+       document.getElementById("b").textContent = ""; // Очистить элемент для сотен
+       document.getElementById("c").textContent = ""; // Очистить элемент для десятков
+       document.getElementById("d").textContent = ""; // Очистить элемент для единиц
+       document.getElementById("finnish-title").style.display = "block"; // Показать "Финское название"
      } else {
+       document.getElementById("g").textContent = ""; // Очистить вывод функции
+       document.getElementById("finnish-title").style.display = "none"; // Скрыть "Финское название"
        let b = Math.floor(a / 100);
        let c = Math.floor((a / 10) % 10);
        let d = a % 10;
@@ -114,5 +118,3 @@
  </div>
 </body>
 </html>
-
-
